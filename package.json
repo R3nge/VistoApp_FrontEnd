@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "build": "expo build && babel src -d dist",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "start": "babel-node App.js",
+    "build": "babel src -d dist"
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
