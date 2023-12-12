@@ -48,16 +48,16 @@ export default function Tabs() {
           tabBarIcon: "assignment"
         }}
       />
-      <Tab.Screen 
-        name="Imovel" 
+      <Tab.Screen
+        name="Imovel"
         component={Imovel}
         options={{
           tabBarIcon: "apartment",
         }}
       />
-      <Tab.Screen 
-        name="Proprietario" 
-        component={Proprietario} 
+      <Tab.Screen
+        name="Proprietario"
+        component={Proprietario}
         options={{
           tabBarIcon: "person",
         }}
