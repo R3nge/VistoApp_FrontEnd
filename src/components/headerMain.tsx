@@ -6,12 +6,13 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 
 interface HeaderMainProps {
-    text : string;
+    text: string;
 }
 
-const HeaderMain: React.FC<HeaderMainProps> = ({text}) => {
+const HeaderMain: React.FC<HeaderMainProps> = ({ text }) => {
     const navigation = useNavigation();
 
     const handleBack = () => {
@@ -21,13 +22,13 @@ const HeaderMain: React.FC<HeaderMainProps> = ({text}) => {
     return (
         <View style={styles.container}>
             <View style={styles.content}>
-                <View style = {styles.buttonContainer}>
+                <View style={styles.buttonContainer}>
                     <TouchableOpacity
-                        onPress = {handleBack}
+                        onPress={handleBack}
                     >
                         <MaterialCommunityIcons name="arrow-left" size={30} color="#fff" />
                     </TouchableOpacity>
-                    <Text style = {styles.title}>
+                    <Text style={styles.title}>
                         {text}
                     </Text>
                     <TouchableOpacity>

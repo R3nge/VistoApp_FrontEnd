@@ -1,22 +1,46 @@
-//Basic Import
-import React from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    Image,
-} from "react-native";
 
-//Components Import
-import LoginButton from "../../components/button";
-import FormInput from "../../components/input";
-import RegisterButton from "../../components/textButton";
 
 //Navigation Import
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { View, Text, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native"; // Importe useNavigation para obter o objeto de navegação
+import Toast from 'react-native-toast-message';
+
+// Rotas
+import loginRoute from "../../router/post";
+// Components Import
+import LoginButton from "../../components/button";
+import FormInput from "../../components/input";
+import RegisterButton from "../../components/textButton";
+import { SetStateAction, useState, ChangeEvent } from 'react';
+import { useRoute } from "@react-navigation/native";
+import React from 'react';
+
 export default function Login({ navigation }: { navigation: any }) {
+    const [mailValue, setMailValue] = useState('');
+    const [passwordValue, setPasswordValue] = useState('');
+    const router = useRoute();
+    const notify = (errorMessage: string) => {
+        Toast.show({
+            type: 'error',
+            text1: errorMessage,
+            position: 'top',
+            autoHide: true,
+            visibilityTime: 5000,  // Ajuste o tempo conforme necessário
+        });
+    };
+
+
+    const handleUserChange = (value: string) => {
+        setMailValue(value);
+    };
+
+    const handlePasswordChange = (value: string) => {
+        setPasswordValue(value);
+    };
+
     return (
         <View style={styles.container} >
             <View style={styles.containerForm}>
@@ -32,26 +56,36 @@ export default function Login({ navigation }: { navigation: any }) {
                     <FormInput
                         placeholder="Digite seu email"
                         secureTextEntry={false}
+                        onChangeText={handleUserChange}
                     />
                     <FormInput
                         placeholder="Digite sua senha"
                         secureTextEntry={true}
+                        onChangeText={handlePasswordChange}
                     />
                     <LoginButton
                         textBtn="Login"
-                        onPress={() => navigation.navigate('Tabs')}
+                        onPress={async () => {
+                            const loginSuccess = await loginRoute(mailValue, passwordValue);
+                            if (loginSuccess) {
+                                router.navigate('Tabs');
+                            } else {
+                                notify('User ou password incorretos');
+                            }
+                        }}
                     />
                     <RegisterButton
                         text="Não tem conta?"
                         textBtn="Cadastre-se"
-                        onPress={() => navigation.navigate('Register')}
+                        onPress={async () => {
+                            router.navigate('cadastro')
+                        }}
                     />
                 </View>
             </View>
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,

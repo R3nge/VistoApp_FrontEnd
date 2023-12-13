@@ -1,7 +1,6 @@
 //Basic Imports
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import React from 'react';
+import * as React from 'react';
 
 //Pages Imports
 import Welcome from '../pages/welcome/welcome';

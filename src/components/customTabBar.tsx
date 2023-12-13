@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native
 
 //Icons Imports
 import { MaterialIcons } from '@expo/vector-icons';
+import React from 'react';
 
 export default function MyTabBar({ state, descriptors, navigation }: any) {
     return (
@@ -47,9 +48,9 @@ export default function MyTabBar({ state, descriptors, navigation }: any) {
                             onLongPress={onLongPress}
                             style={styles.button}
                         >
-                            <View style = {styles.buttonContainer}>
-                                <View 
-                                    style = {
+                            <View style={styles.buttonContainer}>
+                                <View
+                                    style={
                                         {
                                             width: 50,
                                             height: 50,
@@ -61,7 +62,7 @@ export default function MyTabBar({ state, descriptors, navigation }: any) {
                                     }
                                 >
                                     <MaterialIcons
-                                        name= {options.tabBarIcon}
+                                        name={options.tabBarIcon}
                                         size={isFocused ? 34 : 24}
                                         color={isFocused ? '#008015' : '#222'}
                                     />
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    buttonContainer:{
+    buttonContainer: {
         width: '100%',
         height: '100%',
         justifyContent: 'center',

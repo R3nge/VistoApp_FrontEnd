@@ -8,15 +8,17 @@ import {
 interface MeuBotaoProps {
   placeholder: string;
   secureTextEntry: boolean;
+  onChangeText: (value: string) => void;  // Corrigido para ser uma função
 }
 
-const FormInput: React.FC<MeuBotaoProps> = ({ placeholder, secureTextEntry}) => {
+const FormInput: React.FC<MeuBotaoProps> = ({ placeholder, secureTextEntry, onChangeText }) => {
   return (
     <TextInput
       style={styles.input}
-      placeholder= {placeholder}
+      placeholder={placeholder}
       placeholderTextColor="#003f5c"
-      secureTextEntry= {secureTextEntry}
+      secureTextEntry={secureTextEntry}
+      onChangeText={onChangeText}  // Corrigido para usar onChangeText
       autoCapitalize="none"
     />
   );

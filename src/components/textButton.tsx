@@ -4,7 +4,7 @@ import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
 interface MeuBotaoProps {
     text: string;
     textBtn: string;
-    onPress: (  ) => void;
+    onPress: () => void;
 }
 
 const RegisterButton: React.FC<MeuBotaoProps> = ({ text, textBtn, onPress }) => {
@@ -13,8 +13,8 @@ const RegisterButton: React.FC<MeuBotaoProps> = ({ text, textBtn, onPress }) => 
             <Text style={styles.text}>
                 {text}
             </Text>
-            <TouchableOpacity 
-                style={styles.btn} 
+            <TouchableOpacity
+                style={styles.btn}
                 onPress={onPress}
             >
                 <Text style={styles.textBtn}>
