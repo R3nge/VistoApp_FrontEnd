@@ -1,21 +1,10 @@
 import React from "react";
-
-import {
-    View,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
-
-} from "react-native";
-
-import { useNavigation } from '@react-navigation/native';
-
+import { View } from "react-native";
 import HeaderMain from "../../components/headerMain";
 import OptionButton from "../../components/optionButton";
+import styles from './imovel.styles';
 
-
-export default function Imovel ({ navigation }: { navigation: any }) {
+const Imovel = ({ navigation }: { navigation: any }) => {
     return (
         <View style={styles.container}>
             <HeaderMain
@@ -35,20 +24,6 @@ export default function Imovel ({ navigation }: { navigation: any }) {
             </View>
         </View>
     );
-}
+};
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-    },
-    menu: {
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        width: '93%',
-        flexDirection: 'row',
-        top: 20,
-    }
-});
+export default Imovel;

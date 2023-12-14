@@ -1,4 +1,4 @@
-import cadastroRoute from "../../router/post";
+import cadastroRoute from "../login/login.controller";
 
 //Basic Import
 import React from "react";

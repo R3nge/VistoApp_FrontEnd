@@ -1,30 +1,25 @@
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import LoginButton from '../../components/button';
+import FormInput from '../../components/input';
+import { showMessage } from 'react-native-flash-message';
+import loginRoute from './login.controller';
+import styles from './login.styles';
 
-import { View, Text, StyleSheet } from "react-native";
-
-import Toast from 'react-native-toast-message';
-
-// Rotas
-import loginRoute from "../../router/post";
-// Components Import
-import LoginButton from "../../components/button";
-import FormInput from "../../components/input";
-import RegisterButton from "../../components/textButton";
-import { SetStateAction, useState} from 'react';
-import React from 'react';
-
-export default function Login({ navigation }: { navigation: any }) {
+export default function Login() {
     const [mailValue, setMailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
+    const navigation:any = useNavigation();
+
     const notify = (errorMessage: string) => {
-        Toast.show({
-            type: 'error',
-            text1: errorMessage,
+        showMessage({
+            message: errorMessage,
+            type: 'danger',
+            duration: 5000,
             position: 'top',
-            autoHide: true,
-            visibilityTime: 5000,  // Ajuste o tempo conforme necessário
         });
     };
-
 
     const handleUserChange = (value: string) => {
         setMailValue(value);
@@ -35,15 +30,11 @@ export default function Login({ navigation }: { navigation: any }) {
     };
 
     return (
-        <View style={styles.container} >
+        <View style={styles.container}>
             <View style={styles.containerForm}>
                 <View style={styles.formTitle}>
-                    <Text style={styles.title}>
-                        Fazer Login
-                    </Text>
-                    <Text style={styles.subtitle}>
-                        Insira seus dados para continuar
-                    </Text>
+                    <Text style={styles.title}>Fazer Login</Text>
+                    <Text style={styles.subtitle}>Insira seus dados para continuar</Text>
                 </View>
                 <View style={styles.form}>
                     <FormInput
@@ -59,70 +50,21 @@ export default function Login({ navigation }: { navigation: any }) {
                     <LoginButton
                         textBtn="Login"
                         onPress={async () => {
+                            console.log('Before navigation:', mailValue, passwordValue);
                             const loginSuccess = await loginRoute(mailValue, passwordValue);
+                            console.log('After login route:', loginSuccess);
+
                             if (loginSuccess) {
+                                console.log('Navigating to Tabs');
                                 navigation.navigate('Tabs');
                             } else {
-                                notify('User ou password incorretos');
+                                console.log('Login failed');
+                                notify('Usuário ou senha incorretos');
                             }
                         }}
-                    />
-                    <RegisterButton
-                        text="Não tem conta?"
-                        textBtn="Cadastre-se"
-                        onPress={async () => navigation.navigate('Register')}
                     />
                 </View>
             </View>
         </View>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-    },
-    text: {
-        color: '#000',
-        fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-
-    containerForm: {
-        flex: 1,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    formTitle: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 40,
-    },
-    title: {
-        fontSize: 30,
-        fontWeight: '600',
-        color: '#000',
-        marginBottom: 5,
-    },
-    subtitle: {
-        fontSize: 20,
-        fontWeight: '400',
-        color: '#000',
-    },
-    form: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-});
