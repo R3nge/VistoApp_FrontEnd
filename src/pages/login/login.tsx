@@ -1,11 +1,6 @@
 
-
-//Navigation Import
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { View, Text, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Importe useNavigation para obter o objeto de navegação
+
 import Toast from 'react-native-toast-message';
 
 // Rotas
@@ -14,14 +9,12 @@ import loginRoute from "../../router/post";
 import LoginButton from "../../components/button";
 import FormInput from "../../components/input";
 import RegisterButton from "../../components/textButton";
-import { SetStateAction, useState, ChangeEvent } from 'react';
-import { useRoute } from "@react-navigation/native";
+import { SetStateAction, useState} from 'react';
 import React from 'react';
 
 export default function Login({ navigation }: { navigation: any }) {
     const [mailValue, setMailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
-    const router = useRoute();
     const notify = (errorMessage: string) => {
         Toast.show({
             type: 'error',
@@ -68,7 +61,7 @@ export default function Login({ navigation }: { navigation: any }) {
                         onPress={async () => {
                             const loginSuccess = await loginRoute(mailValue, passwordValue);
                             if (loginSuccess) {
-                                router.navigate('Tabs');
+                                navigation.navigate('Tabs');
                             } else {
                                 notify('User ou password incorretos');
                             }
@@ -77,9 +70,7 @@ export default function Login({ navigation }: { navigation: any }) {
                     <RegisterButton
                         text="Não tem conta?"
                         textBtn="Cadastre-se"
-                        onPress={async () => {
-                            router.navigate('cadastro')
-                        }}
+                        onPress={async () => navigation.navigate('Register')}
                     />
                 </View>
             </View>

@@ -1,6 +1,6 @@
 //Basic Imports
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as React from 'react';
+import React from 'react';
 
 //Pages Imports
 import Welcome from '../pages/welcome/welcome';
@@ -10,7 +10,6 @@ import Tabs from './tabs';
 import NovoProprietario from '../pages/novoProprietario/novoProprietario';
 import NovoEnderecoProprietario from '../pages/novoEnderecoProprietario/novoEnderecoProprietario';
 import { ScreenStack } from 'react-native-screens';
-
 
 //Constants
 const Stack = createNativeStackNavigator();

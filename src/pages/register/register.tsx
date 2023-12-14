@@ -1,5 +1,8 @@
+import cadastroRoute from "../../router/post";
+
 //Basic Import
 import React from "react";
+import { useState } from "react";
 import {
     View,
     Text,
@@ -18,6 +21,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function Register({ navigation }: { navigation: any }) {
+
     return (
         <View style={styles.container} >
             <View style={styles.containerForm}>
@@ -33,19 +37,23 @@ export default function Register({ navigation }: { navigation: any }) {
                     <FormInput
                         placeholder="Digite seu nome"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
                     <FormInput
                         placeholder="Digite seu email"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
 
                     <FormInput
                         placeholder="Digite seu telefone"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
                     <FormInput
                         placeholder="Digite sua senha"
                         secureTextEntry={true}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
                     <LoginButton
                         textBtn="Cadastrar"

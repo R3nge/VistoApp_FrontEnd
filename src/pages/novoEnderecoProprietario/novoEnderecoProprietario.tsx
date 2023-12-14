@@ -36,19 +36,23 @@ export default function NovoProprietario({ navigation } : { navigation: any}) {
                     <FormInput
                         placeholder="Nome do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
                     <FormInput
                         placeholder="Email do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
 
                     <FormInput
                         placeholder="Telefone do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
                     <FormInput
                         placeholder="CPF do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
                     <LoginButton
                         textBtn="Cadastrar"

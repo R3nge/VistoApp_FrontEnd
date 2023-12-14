@@ -1,11 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import {
     View,
     Text,
     StyleSheet,
     Image,
     TouchableOpacity,
-
 } from "react-native";
 
 import { NavigationContainer} from '@react-navigation/native';
@@ -17,7 +17,29 @@ import FormInput from "../../components/input";
 import LoginButton from '../../components/button';
 import RegisterButton from '../../components/textButton';
 
+
+
+import CreatePropietario from "../../router/post";
+
 export default function NovoProprietario({ navigation } : { navigation: any}) {
+    const [nameValue, setNameValue] = useState('');
+    const [mailValue, setMailValue] = useState('');
+    const [phoneValue, setPhoneValue] = useState('');
+    const [cpfValue, setCpfValue] = useState('');
+
+    const handleNameChange = (value: string) => {
+        setNameValue(value);
+    };
+    const handleMailChange = (value: string) => {
+        setMailValue(value);
+    };
+    const handlePhoneChange = (value: string) => {
+        setPhoneValue(value);
+    };
+    const handleCpfChange = (value: string) => {
+        setCpfValue(value);
+    };
+
     return (
         <View style={styles.container} >
             <HeaderMain
@@ -36,23 +58,28 @@ export default function NovoProprietario({ navigation } : { navigation: any}) {
                     <FormInput
                         placeholder="Nome do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={handleNameChange}
                     />
                     <FormInput
                         placeholder="Email do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={handleMailChange}
                     />
 
                     <FormInput
                         placeholder="Telefone do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={(value: string) => { console.log(value) }}
                     />
                     <FormInput
                         placeholder="CPF do Proprietário"
                         secureTextEntry={false}
+                        onChangeText={handlePhoneChange}
                     />
                     <LoginButton
                         textBtn="Prosseguir"
-                        onPress={() => navigation.navigate('NovoEnderecoProprietario')}
+                        onPress={async () => {
+                        }}
                     />
                 </View>
             </View>
