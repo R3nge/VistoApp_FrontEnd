@@ -1,18 +1,20 @@
 //Basic Imports
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialIcons } from '@expo/vector-icons';
 
 //Pages Imports
-import Home from '../pages/home/home';
-import Vistoria from '../pages/vistoria/vistoria';
-import Imovel from '../pages/imovel/imovel';
-import Proprietario from '../pages/proprietario/proprietario';
+import Home from '../pages/tab_home/home';
+import Vistoria from '../pages/tab_vistoria/vistoria';
+import Imovel from '../pages/tab_imovel/tab_imovel';
+import Proprietario from '../pages/tab_proprietario/tab_proprietario';
+
+//Navigation Imports
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //Components Imports
 import MyTabBar from '../components/customTabBar';
+
+//Icons Imports
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,7 +40,9 @@ export default function Tabs() {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: "home"
+          tabBarIcon: (
+            "home"
+          ),
         }}
       />
       <Tab.Screen

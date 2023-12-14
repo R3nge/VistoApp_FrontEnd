@@ -1,5 +1,5 @@
 //Basic Imports
-import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
 //Icons Imports
 import { MaterialIcons } from '@expo/vector-icons';

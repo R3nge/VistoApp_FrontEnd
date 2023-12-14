@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { showMessage } from 'react-native-flash-message';
-
-// Rota de Login
-import loginRoute from '../../router/post';
-import Tabs from '../../router/routes';
-// Componentes
 import LoginButton from '../../components/button';
 import FormInput from '../../components/input';
-import RegisterButton from '../../components/textButton';
+import { showMessage } from 'react-native-flash-message';
+import loginRoute from './login.controller';
+import styles from './login.styles';
 
 export default function Login() {
     const [mailValue, setMailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
-    const navigation = useNavigation();
+    const navigation:any = useNavigation();
 
     const notify = (errorMessage: string) => {
         showMessage({
@@ -32,7 +28,6 @@ export default function Login() {
     const handlePasswordChange = (value: string) => {
         setPasswordValue(value);
     };
-
 
     return (
         <View style={styles.container}>
@@ -68,58 +63,8 @@ export default function Login() {
                             }
                         }}
                     />
-
                 </View>
             </View>
         </View>
     );
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-    },
-    text: {
-        color: '#000',
-        fontSize: 30,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-
-    containerForm: {
-        flex: 1,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    formTitle: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 40,
-    },
-    title: {
-        fontSize: 30,
-        fontWeight: '600',
-        color: '#000',
-        marginBottom: 5,
-    },
-    subtitle: {
-        fontSize: 20,
-        fontWeight: '400',
-        color: '#000',
-    },
-    form: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-});
