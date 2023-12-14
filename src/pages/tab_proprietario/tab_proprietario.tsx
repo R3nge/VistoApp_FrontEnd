@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import HeaderMain from "../../components/headerMain";
 import OptionButton from "../../components/optionButton";
-import styles from './proprietario.styles';
+import styles from './tab_proprietario.styles';
 
 export default function Proprietario({ navigation }: { navigation: any }) {
     return (

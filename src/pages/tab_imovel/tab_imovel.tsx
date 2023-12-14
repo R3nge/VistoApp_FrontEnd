@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import HeaderMain from "../../components/headerMain";
 import OptionButton from "../../components/optionButton";
-import styles from './imovel.styles';
+import styles from './tab_imovel.styles';
 
 const Imovel = ({ navigation }: { navigation: any }) => {
     return (
