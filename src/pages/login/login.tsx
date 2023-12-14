@@ -1,37 +1,29 @@
+import React, { useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { showMessage } from 'react-native-flash-message';
 
+// Rota de Login
+import loginRoute from '../../router/post';
+import Tabs from '../../router/routes';
+// Componentes
+import LoginButton from '../../components/button';
+import FormInput from '../../components/input';
+import RegisterButton from '../../components/textButton';
 
-//Navigation Import
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import { View, Text, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Importe useNavigation para obter o objeto de navegação
-import Toast from 'react-native-toast-message';
-
-// Rotas
-import loginRoute from "../../router/post";
-// Components Import
-import LoginButton from "../../components/button";
-import FormInput from "../../components/input";
-import RegisterButton from "../../components/textButton";
-import { SetStateAction, useState, ChangeEvent } from 'react';
-import { useRoute } from "@react-navigation/native";
-import React from 'react';
-
-export default function Login({ navigation }: { navigation: any }) {
+export default function Login() {
     const [mailValue, setMailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
-    const router = useRoute();
+    const navigation = useNavigation();
+
     const notify = (errorMessage: string) => {
-        Toast.show({
-            type: 'error',
-            text1: errorMessage,
+        showMessage({
+            message: errorMessage,
+            type: 'danger',
+            duration: 5000,
             position: 'top',
-            autoHide: true,
-            visibilityTime: 5000,  // Ajuste o tempo conforme necessário
         });
     };
-
 
     const handleUserChange = (value: string) => {
         setMailValue(value);
@@ -41,16 +33,13 @@ export default function Login({ navigation }: { navigation: any }) {
         setPasswordValue(value);
     };
 
+
     return (
-        <View style={styles.container} >
+        <View style={styles.container}>
             <View style={styles.containerForm}>
                 <View style={styles.formTitle}>
-                    <Text style={styles.title}>
-                        Fazer Login
-                    </Text>
-                    <Text style={styles.subtitle}>
-                        Insira seus dados para continuar
-                    </Text>
+                    <Text style={styles.title}>Fazer Login</Text>
+                    <Text style={styles.subtitle}>Insira seus dados para continuar</Text>
                 </View>
                 <View style={styles.form}>
                     <FormInput
@@ -66,21 +55,20 @@ export default function Login({ navigation }: { navigation: any }) {
                     <LoginButton
                         textBtn="Login"
                         onPress={async () => {
+                            console.log('Before navigation:', mailValue, passwordValue);
                             const loginSuccess = await loginRoute(mailValue, passwordValue);
+                            console.log('After login route:', loginSuccess);
+
                             if (loginSuccess) {
-                                router.navigate('Tabs');
+                                console.log('Navigating to Tabs');
+                                navigation.navigate('Tabs');
                             } else {
-                                notify('User ou password incorretos');
+                                console.log('Login failed');
+                                notify('Usuário ou senha incorretos');
                             }
                         }}
                     />
-                    <RegisterButton
-                        text="Não tem conta?"
-                        textBtn="Cadastre-se"
-                        onPress={async () => {
-                            router.navigate('cadastro')
-                        }}
-                    />
+
                 </View>
             </View>
         </View>

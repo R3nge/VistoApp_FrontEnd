@@ -8,7 +8,7 @@ import {
 
 } from "react-native";
 
-import { NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HeaderMain from "../../components/headerMain";
@@ -17,7 +17,7 @@ import FormInput from "../../components/input";
 import LoginButton from '../../components/button';
 import RegisterButton from '../../components/textButton';
 
-export default function NovoProprietario({ navigation } : { navigation: any}) {
+export default function NovoProprietario({ navigation }: { navigation: any }) {
     return (
         <View style={styles.container} >
             <HeaderMain
