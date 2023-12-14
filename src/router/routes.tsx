@@ -7,8 +7,8 @@ import Welcome from '../pages/welcome/welcome';
 import Login from '../pages/login/login';
 import Register from '../pages/register/register';
 import Tabs from './tabs';
-import NovoProprietario from '../pages/novoProprietario/novoProprietario';
-import NovoEnderecoProprietario from '../pages/novoEnderecoProprietario/novoEnderecoProprietario';
+import NovoProprietario from '../pages/proprietario/novoProprietario/novoProprietario';
+import NovoEnderecoProprietario from '../pages/proprietario/novoEnderecoProprietario/novoEnderecoProprietario';
 import { ScreenStack } from 'react-native-screens';
 
 

@@ -11,11 +11,11 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HeaderMain from "../../components/headerMain";
-import FormInput from "../../components/input";
+import HeaderMain from "../../../components/headerMain";
+import FormInput from "../../../components/input";
 
-import LoginButton from '../../components/button';
-import RegisterButton from '../../components/textButton';
+import LoginButton from '../../../components/button';
+import RegisterButton from '../../../components/textButton';
 
 export default function NovoProprietario({ navigation }: { navigation: any }) {
     return (
