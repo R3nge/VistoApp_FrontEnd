@@ -154,8 +154,9 @@ export default function NovoProprietario() {
                         <LoginButton
                             textBtn="Cadastrar"
                             onPress={async () => {
-                                console.log('Before navigation:', nameValue, emailValue, telValue, cpfValue, typeValue, birthDateValue, cepValue, estadoValue, cidadeValue, bairroValue, numeroValue, complementoValue, ruaValue);
-                                const success = await newProprietarioController("Gian Henrique", "gianhbl@gmail.com", parseInt("982066184"), "12990070664", "Vistoriador", "1985-08-20", "36252-000", "MG", "Rio Pomba", "Centro", parseInt("478"), "complementoValue", "ruaValue");
+                                const enderecoValue = { rua: ruaValue, complemento: complementoValue, numero: parseInt(numeroValue), bairro: bairroValue, cidade: cidadeValue, estado: estadoValue, cep: cepValue };
+                                console.log('Before navigation:', cpfValue, nameValue, telValue, emailValue, birthDateValue, typeValue, enderecoValue);
+                                const success = await newProprietarioController(cpfValue, nameValue, parseInt(telValue), emailValue, birthDateValue, typeValue, enderecoValue);
                                 console.log('After new proprietor route:', success);
 
                                 if (success) {

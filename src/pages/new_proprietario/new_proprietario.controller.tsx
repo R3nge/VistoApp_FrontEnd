@@ -8,16 +8,16 @@ const newProprietarioController = async (
     cpf: string,
     type: string,
     birthDate: string,
-    cep : string,
+    endereco: {cep : string,
     estado : string,
     cidade : string,
     bairro : string,
     numero : number,
     complemento : string,
-    rua : string,
+    rua : string,}
     ): Promise<boolean> => {
       try {
-        const response = await api.post("/criarPessoa", { name, email, tel, cpf, type, birthDate, cep, estado, cidade, bairro, numero, complemento, rua });
+        const response = await api.post("/criarPessoa", { cpf, name, tel, email, birthDate, type, endereco });
         const jwt = response?.data.jwt;
     
         await AsyncStorage.setItem("token", jwt);

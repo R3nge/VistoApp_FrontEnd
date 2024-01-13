@@ -6,12 +6,12 @@ const createUserController = async (
     password: string,
     confirmPassword: string,
     fullName: string,
-    birthday: string,
+    birthDate: string,
     type: string,
 ): Promise<boolean> => {
     try {
-        const response = await api.post("/User/CreateUser", { email, password, confirmPassword, fullName, birthday, type});
-        const jwt = response?.data.jwt;
+        console.log(birthDate)
+        const response = await api.post("/User/CreateUser", { email, password, confirmPassword, fullName, birthDate, type});
 
         return true;
     } catch (err) {
