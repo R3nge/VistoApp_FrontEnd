@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import LoginButton from '../../components/button';
+import LoginButton from '../../components/mainButton';
 import RegisterButton from '../../components/textButton';
 import styles from './welcome.styles';
 
@@ -18,7 +18,7 @@ const Welcome = ({ navigation }: { navigation: any }) => {
             <View style={styles.btn}>
                 <LoginButton
                     textBtn="Login"
-                    onPress={() => navigation.navigate('Login')}
+                    onPress={() => navigation.navigate('Tabs')}
                 />
                 <RegisterButton
                     text="Ainda não tem uma conta?"

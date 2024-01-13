@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import HeaderMain from '../../components/headerMain';
-import FormInput from '../../components/input';
-import LoginButton from '../../components/button';
+import FormInput from '../../components/formInput';
+import LoginButton from '../../components/mainButton';
 import styles from './new_endereco.styles';
 import { useNavigation } from '@react-navigation/native';
 import { showMessage } from 'react-native-flash-message';
@@ -134,9 +134,10 @@ export default function NovoEndereco() {
                                 cepValue
                               );
                               if (success) {
-                                navigation.navigate('OutraTela'); // Substitua 'OutraTela' pelo nome da próxima tela
+                                navigation.navigate('NewProprietarioSucess'); // Substitua 'OutraTela' pelo nome da próxima tela
                               } else {
                                 notify('Erro ao cadastrar endereço');
+                                navigation.navigate('NewProprietarioError');
                               }
                             }
                           }}

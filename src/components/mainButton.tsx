@@ -8,7 +8,7 @@ interface btnProps {
   onPress: () => void;
 }
 
-const LoginButton: React.FC<btnProps> = ({ textBtn, onPress }) => {
+const MainButton: React.FC<btnProps> = ({ textBtn, onPress }) => {
   return (
     <TouchableOpacity style={styles.btn} onPress={onPress}>
       <Text style={styles.text}>{textBtn}</Text>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginButton;
+export default MainButton;

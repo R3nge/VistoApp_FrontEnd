@@ -1,25 +1,37 @@
-import axios from 'axios';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { api, isAxiosError } from "../../axiosConfig";
 
 const newProprietarioController = async (
     name: string,
     email: string,
-    phone: string,
+    tel: number,
     cpf: string,
-    enredecoId: string,
-  ): Promise<boolean> => {
-  try {
-    const response = await axios.post('/Propietario/CreatePropietario', { name, email, phone, cpf, enredecoId}, { timeout: 5000 });
-    const createdProprietor = response?.data;
-
-    // Handle the created proprietor as needed
-    console.log('Proprietário cadastrado com sucesso!', createdProprietor);
-
-    return true;
-  } catch (error) {
-    // Handle errors
-    console.error('Erro ao cadastrar proprietário:', error);
-    return false;
-  }
-};
-
-export default newProprietarioController;
+    type: string,
+    birthDate: string,
+    cep : string,
+    estado : string,
+    cidade : string,
+    bairro : string,
+    numero : number,
+    complemento : string,
+    rua : string,
+    ): Promise<boolean> => {
+      try {
+        const response = await api.post("/criarPessoa", { name, email, tel, cpf, type, birthDate, cep, estado, cidade, bairro, numero, complemento, rua });
+        const jwt = response?.data.jwt;
+    
+        await AsyncStorage.setItem("token", jwt);
+        return true;
+      } catch (err) {
+        if (isAxiosError(err)) {
+          console.error("Axios error:", err);
+          console.error("Response data:", err.response?.data);
+          console.error("Request config:", err.config);
+        } else {
+          console.error("Non-Axios error:", err);
+        }
+      }
+      return false;
+    };
+    
+    export default newProprietarioController;

@@ -17,7 +17,7 @@ export default function Proprietario({ navigation }: { navigation: any }) {
                     icon="plus"
                 />
                 <OptionButton
-                    onPress={() => navigation.navigate('')}
+                    onPress={() => navigation.navigate('ListProprietario')}
                     text="Buscar"
                     icon="magnify"
                 />

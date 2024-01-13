@@ -4,12 +4,11 @@ import { useNavigation } from '@react-navigation/native';
 import LoginButton from '../../components/mainButton';
 import FormInput from '../../components/formInput';
 import { showMessage } from 'react-native-flash-message';
-import loginRoute from './login.controller';
-import styles from './login.styles';
+import testeRoute from './teste.controller';
+import styles from './teste.styles';
 
-export default function Login() {
-    const [mailValue, setMailValue] = useState('');
-    const [passwordValue, setPasswordValue] = useState('');
+export default function Teste() {
+    const [nameValue, setNameValue] = useState('');
     const navigation: any = useNavigation();
 
     const notify = (errorMessage: string) => {
@@ -21,40 +20,31 @@ export default function Login() {
         });
     };
 
-    const handleUserChange = (value: string) => {
-        setMailValue(value);
-    };
-
-    const handlePasswordChange = (value: string) => {
-        setPasswordValue(value);
+    const handleNameChange = (value: string) => {
+        setNameValue(value);
     };
 
     return (
         <View style={styles.container}>
             <View style={styles.containerForm}>
                 <View style={styles.formTitle}>
-                    <Text style={styles.title}>Fazer Login</Text>
+                    <Text style={styles.title}>Fazer Teste</Text>
                     <Text style={styles.subtitle}>Insira seus dados para continuar</Text>
                 </View>
                 <View style={styles.form}>
                     <FormInput
                         placeholder="Digite seu email"
                         secureTextEntry={false}
-                        onChangeText={handleUserChange}
-                    />
-                    <FormInput
-                        placeholder="Digite sua senha"
-                        secureTextEntry={true}
-                        onChangeText={handlePasswordChange}
+                        onChangeText={handleNameChange}
                     />
                     <LoginButton
                         textBtn="Login"
                         onPress={async () => {
-                            console.log('Before navigation:', mailValue, passwordValue);
-                            const loginSuccess = await loginRoute(mailValue, passwordValue);
-                            console.log('After login route:', loginSuccess);
+                            console.log('Before navigation:', nameValue);
+                            const Success = await testeRoute(nameValue);
+                            console.log('After login route:', Success);
 
-                            if (loginSuccess) {
+                            if (Success) {
                                 console.log('Navigating to Tabs');
                                 navigation.navigate('Tabs');
                             } else {
