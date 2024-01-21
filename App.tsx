@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImovelContextProvider } from './src/context/imovelContext';
 
 import {
   StatusBar,
@@ -19,7 +20,7 @@ export default function App() {
     <NavigationContainer>
 
         <StatusBar backgroundColor="#233d1d" barStyle="light-content" />
-        <Routes />
+        <ImovelContextProvider ><Routes /></ImovelContextProvider>
 
     </NavigationContainer>
   );

@@ -8,7 +8,6 @@ import DropdownInput from '../../components/dropDownImovel';
 import DropDownVistoriadorInput from '../../components/dropDownVistoriador';
 import styles from './new_vistoria.styles';
 import newVistoriaController from './new_vistoria.controller';
-import vistoriaData from './new_vistoria.controller';
 
 export default function NewVistoria() {
 
@@ -74,4 +73,3 @@ export default function NewVistoria() {
         </ScrollView>
     );
 }
-
