@@ -18,7 +18,7 @@ const Welcome = ({ navigation }: { navigation: any }) => {
             <View style={styles.btn}>
                 <LoginButton
                     textBtn="Login"
-                    onPress={() => navigation.navigate('Tabs')}
+                    onPress={() => navigation.navigate('Login')}
                 />
                 <RegisterButton
                     text="Ainda não tem uma conta?"

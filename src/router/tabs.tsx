@@ -2,10 +2,10 @@
 import React from 'react';
 
 //Pages Imports
-import Home from '../pages/tab_home/home';
+import Home from '../pages/tab_home/tab_home';
 import Vistoria from '../pages/tab_vistoria/vistoria';
 import Imovel from '../pages/tab_imovel/tab_imovel';
-import Proprietario from '../pages/tab_proprietario/tab_proprietario';
+import Proprietario from '../pages/tab_pessoas/tab_pessoas';
 
 //Navigation Imports
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';

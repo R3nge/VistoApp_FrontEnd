@@ -5,6 +5,8 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import { useState } from 'react';
+
 interface Props {
   placeholder: string;
   secureTextEntry: boolean;
@@ -12,13 +14,16 @@ interface Props {
 }
 
 const FormInput: React.FC<Props> = ({ placeholder, secureTextEntry, onChangeText }) => {
+  const [isFocus, setIsFocus] = useState(false);
   return (
     <TextInput
-      style={styles.input}
+      style={[styles.input, isFocus && { borderColor: 'green' }]}
       placeholder={placeholder}
-      placeholderTextColor="#003f5c"
+      placeholderTextColor="#081f0d"
       secureTextEntry={secureTextEntry}
       onChangeText={onChangeText}
+      onFocus={() => setIsFocus(true)}
+      onBlur={() => setIsFocus(false)}
       autoCapitalize="none"
     />
   );
@@ -34,7 +39,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     marginBottom: 16,
-    elevation: 1,
     borderWidth: 1.8,
     borderColor: 'lightgray',
   },

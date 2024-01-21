@@ -10,9 +10,14 @@ const createUserController = async (
     type: string,
 ): Promise<boolean> => {
     try {
-        console.log(birthDate)
-        const response = await api.post("/User/CreateUser", { email, password, confirmPassword, fullName, birthDate, type});
-
+        const response = await api.post("/User/CreateUser", {
+            email,
+            password,
+            confirmPassword,
+            fullName,
+            birthDate,
+            type,
+        });
         return true;
     } catch (err) {
         if (isAxiosError(err)) {

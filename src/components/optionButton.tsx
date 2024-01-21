@@ -50,11 +50,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     text: {
+        width: 85,
+        height: 40,
         fontSize: 14,
         fontWeight: 'bold',
         color: '#000',
         textAlign: 'center',
-        elevation: 10,
         paddingTop: 5,
     },
 });

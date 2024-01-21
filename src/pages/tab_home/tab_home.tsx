@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import HeaderMain from "../../components/headerMain";
-import styles from './home.styles';
+import styles from './tab_home.styles';
 
 const Home = () => {
     return (

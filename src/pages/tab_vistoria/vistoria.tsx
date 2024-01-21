@@ -14,7 +14,7 @@ export default function VistoriaStructure({ navigation }: { navigation: any }) {
             />
             <View style={styles.menu}>
                 <OptionButton
-                    onPress={() => navigation.navigate('')}
+                    onPress={() => navigation.navigate('NewVistoria')}
                     text="Nova Vistoria"
                     icon="plus"
                 />

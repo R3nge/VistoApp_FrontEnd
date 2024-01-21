@@ -13,10 +13,11 @@ import VariantButton from '../../components/variantButton';
 import RegisterButton from '../../components/textButton';
 
 export default function NewProprietarioSucess() {
+
     const navigation:any = useNavigation();
 
     function handleNavigateToTabs() {
-        navigation.navigate('Tabs');
+        navigation.navigate('ListProprietario');
     }
 
     return (
@@ -26,15 +27,15 @@ export default function NewProprietarioSucess() {
             />
             <View style={styles.content}>
                 <Text style={styles.title}>
-                    Proprietário cadastrado com sucesso!
+                    Cadastrado realizado com sucesso!
                 </Text>
                 <LoginButton
                     textBtn='Voltar para o menu'
                     onPress={handleNavigateToTabs}
                 />
                 <VariantButton
-                    textBtn='Cadastrar outro proprietário'
-                    onPress={() => navigation.navigate('NewProprietario')}
+                    textBtn='Cadastrar outra pessoa'
+                    onPress={() => navigation.navigate('NovoProprietario')}
                 />
                 <RegisterButton
                     text='Ou então acesse a'

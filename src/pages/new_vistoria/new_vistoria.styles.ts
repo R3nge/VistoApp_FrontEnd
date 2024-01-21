@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export default StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
@@ -17,7 +17,7 @@ export default StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 40,
+        marginBottom: 20,
     },
     title: {
         fontSize: 30,
@@ -37,4 +37,12 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    btn: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 });
+
+export default styles;

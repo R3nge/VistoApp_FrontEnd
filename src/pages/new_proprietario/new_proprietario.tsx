@@ -7,6 +7,7 @@ import styles from './new_proprietario.styles';
 import { useNavigation } from '@react-navigation/native';
 import { showMessage } from 'react-native-flash-message';
 import newProprietarioController from './new_proprietario.controller';
+import DropdownInput from '../../components/dropDownTipoPessoa';
 
 export default function NovoProprietario() {
     const navigation: any = useNavigation();
@@ -80,29 +81,32 @@ export default function NovoProprietario() {
                 <HeaderMain text="Novo Proprietário" />
                 <View style={styles.containerForm}>
                     <View style={styles.formTitle}>
-                        <Text style={styles.title}>Cadastre um Proprietário</Text>
+                        <Text style={styles.title}>Cadastre uma Pessoa</Text>
                         <Text style={styles.subtitle}>
                             Insira os dados para continuar
                         </Text>
                     </View>
                     <View style={styles.form}>
+                        <DropdownInput
+                            onChange={handleTypeChange}
+                        />
                         <FormInput
-                            placeholder="CPF do Proprietário"
+                            placeholder="CPF"
                             secureTextEntry={false}
                             onChangeText={handleCpfChange}
                         />
                         <FormInput
-                            placeholder="Nome do Proprietário"
+                            placeholder="Nome"
                             secureTextEntry={false}
                             onChangeText={handleNameChange}
                         />
                         <FormInput
-                            placeholder="Telefone do Proprietário"
+                            placeholder="Telefone"
                             secureTextEntry={false}
                             onChangeText={handleTelChange}
                         />
                         <FormInput
-                            placeholder="Email do Proprietário"
+                            placeholder="Email"
                             secureTextEntry={false}
                             onChangeText={handleMailChange}
                         />
@@ -112,24 +116,19 @@ export default function NovoProprietario() {
                             onChangeText={handleDataChange}
                         />
                         <FormInput
-                            placeholder="Tipo de Pessoa"
+                            placeholder="CEP"
                             secureTextEntry={false}
-                            onChangeText={handleTypeChange}
+                            onChangeText={handleCepChange}
                         />
                         <FormInput
-                            placeholder="Rua do Proprietário"
+                            placeholder="Estado"
                             secureTextEntry={false}
-                            onChangeText={handleRuaChange}
+                            onChangeText={handleEstadoChange}
                         />
                         <FormInput
-                            placeholder="Complemento do Endereço"
+                            placeholder="Cidade"
                             secureTextEntry={false}
-                            onChangeText={handleComplementoChange}
-                        />
-                        <FormInput
-                            placeholder="Número do Endereço"
-                            secureTextEntry={false}
-                            onChangeText={handleNumeroChange}
+                            onChangeText={handleCidadeChange}
                         />
                         <FormInput
                             placeholder="Bairro"
@@ -137,26 +136,44 @@ export default function NovoProprietario() {
                             onChangeText={handleBairroChange}
                         />
                         <FormInput
-                            placeholder="Cidade do Proprietário"
+                            placeholder="Rua"
                             secureTextEntry={false}
-                            onChangeText={handleCidadeChange}
+                            onChangeText={handleRuaChange}
                         />
                         <FormInput
-                            placeholder="Estado do Proprietário"
+                            placeholder="Número"
                             secureTextEntry={false}
-                            onChangeText={handleEstadoChange}
+                            onChangeText={handleNumeroChange}
                         />
                         <FormInput
-                            placeholder="CEP do Proprietário"
+                            placeholder="Complemento"
                             secureTextEntry={false}
-                            onChangeText={handleCepChange}
+                            onChangeText={handleComplementoChange}
                         />
                         <LoginButton
                             textBtn="Cadastrar"
                             onPress={async () => {
-                                const enderecoValue = { rua: ruaValue, complemento: complementoValue, numero: parseInt(numeroValue), bairro: bairroValue, cidade: cidadeValue, estado: estadoValue, cep: cepValue };
-                                console.log('Before navigation:', cpfValue, nameValue, telValue, emailValue, birthDateValue, typeValue, enderecoValue);
-                                const success = await newProprietarioController(cpfValue, nameValue, parseInt(telValue), emailValue, birthDateValue, typeValue, enderecoValue);
+
+                                const enderecoValue = {
+                                    cep: cepValue,
+                                    estado: estadoValue,
+                                    cidade: cidadeValue,
+                                    bairro: bairroValue,
+                                    numero: parseInt(numeroValue),
+                                    complemento: complementoValue,
+                                    rua: ruaValue,
+                                };
+
+                                const success = await newProprietarioController(
+                                    cpfValue,
+                                    nameValue,
+                                    telValue,
+                                    emailValue,
+                                    birthDateValue,
+                                    typeValue,
+                                    enderecoValue,
+                                );
+                                // const success = await newProprietarioController(cpfValue, nameValue, parseInt(telValue), emailValue, birthDateValue, typeValue, enderecoValue);
                                 console.log('After new proprietor route:', success);
 
                                 if (success) {

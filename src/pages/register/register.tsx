@@ -63,7 +63,7 @@ export default function RegisterForm({ navigation }: { navigation: any }) {
                 />
                 <FormInput
                     placeholder="Enter your password"
-                    secureTextEntry={false}
+                    secureTextEntry={true}
                     onChangeText={handlePasswordChange}
                 />
                 <FormInput
@@ -89,19 +89,37 @@ export default function RegisterForm({ navigation }: { navigation: any }) {
                 <LoginButton
                     textBtn="Register"
                     onPress={async () => {
-                        console.log('Before navigation:', emailValue, passWordValue, confirmPassWordValue, fullNameValue, birthDateValue, typeValue);
-                        const loginSuccess = await createUserControler(emailValue, passWordValue, confirmPassWordValue, fullNameValue, birthDateValue, typeValue);
 
-                        console.log('After login route:', loginSuccess);
+                        console.log(
+                            'Before navigation:',
+                            emailValue,
+                            passWordValue,
+                            confirmPassWordValue,
+                            fullNameValue,
+                            birthDateValue,
+                            typeValue,
+                        );
 
-                        if (loginSuccess) {
-                            console.log('Navigating to Tabs');
+                        const success = await createUserControler(
+                            emailValue,
+                            passWordValue,
+                            confirmPassWordValue,
+                            fullNameValue,
+                            birthDateValue,
+                            typeValue,
+                        );
+
+                        console.log('After new user route:', success);
+
+                        if (success) {
+                            console.log('Usuário cadastrado com sucesso!');
                             navigation.navigate('Login');
                         } else {
-                            console.log('Register failed');
-                            notify('Usuário ou senha incorretos');
+                            console.log('Erro ao cadastrar Usuário!');
+                            notify('Erro ao cadastrar Usuário!');
                         }
-                    }}
+                    }
+                    }
                 />
                 <RegisterButton
                     text="Already have an account?"

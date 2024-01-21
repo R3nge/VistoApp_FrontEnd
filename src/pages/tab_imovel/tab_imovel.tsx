@@ -12,12 +12,12 @@ const Imovel = ({ navigation }: { navigation: any }) => {
             />
             <View style={styles.menu}>
                 <OptionButton
-                    onPress={() => navigation.navigate('RegisterImovel')}
+                    onPress={() => navigation.navigate('NovoImovel')}
                     text="Novo Imóvel"
                     icon="plus"
                 />
                 <OptionButton
-                    onPress={() => navigation.navigate('RegisterImovel')}
+                    onPress={() => navigation.navigate('ListImovel')}
                     text="Buscar"
                     icon="magnify"
                 />
