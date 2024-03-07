@@ -1,27 +1,18 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api, isAxiosError } from "../../axiosConfig";
 
-interface VistoriaData {
-    vistoriadorId: string;
-    imovelId: string;
-}
-
 export const newVistoriaController = async (
     vistoriadorId: string,
     imovelId: string,
-): Promise<VistoriaData[]> => {
-
+): Promise<boolean> => {
+    
     try {
         const response = await api.post(`/Vistoria/CreateVistoria/${imovelId}`, {
             vistoriadorId,
             imovelId,
         });
 
-        const vistoria = response.data;
-
-        console.log("Response data:", vistoria);
-
-        return vistoria;
+        return true;
     } catch (err) {
         if (isAxiosError(err)) {
             console.error("Axios error:", err);
@@ -31,6 +22,7 @@ export const newVistoriaController = async (
             console.error("Non-Axios error:", err);
         }
     }
+    return false;
 };
 
 export default newVistoriaController;

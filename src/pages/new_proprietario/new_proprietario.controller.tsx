@@ -25,7 +25,7 @@ const newProprietarioController = async (
       tel, 
       email, 
       birthDate, 
-      type, 
+      type,
       endereco 
     });
     return true;

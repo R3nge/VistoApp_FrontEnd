@@ -4,14 +4,13 @@ import HeaderMain from '../../components/headerMain';
 import LoginButton from '../../components/mainButton';
 import { useNavigation } from '@react-navigation/native';
 import { showMessage } from 'react-native-flash-message';
-import DropdownInput from '../../components/dropDownImovel';
+import DropDownImovelInput from '../../components/dropDownImovel';
 import DropDownVistoriadorInput from '../../components/dropDownVistoriador';
 import styles from './new_vistoria.styles';
 import newVistoriaController from './new_vistoria.controller';
-import vistoriaData from './new_vistoria.controller';
+
 
 export default function NewVistoria() {
-
     const navigation: any = useNavigation();
 
     const notify = (message: string) => {
@@ -37,7 +36,7 @@ export default function NewVistoria() {
                         </Text>
                     </View>
                     <View style={styles.form}>
-                        <DropdownInput
+                        <DropDownImovelInput
                             onChange={(value) => setVistoriadorValue(value)}
                         />
                         <DropDownVistoriadorInput
@@ -61,7 +60,7 @@ export default function NewVistoria() {
 
                                 if (success) {
                                     console.log('Imóvel cadastrado com sucesso!');
-                                    navigation.navigate('NewProprietarioSucess')
+                                    navigation.navigate('NewComodo')
                                 } else {
                                     console.log('Erro ao cadastrar Imóvel!');
                                     notify('Erro ao cadastrar Imóvel!');

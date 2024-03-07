@@ -143,7 +143,7 @@ export default function NovoImovel() {
                                     tipoValue,
                                     ruaValue,
                                     complementoValue,
-                                    3333,
+                                    parseInt(numeroValue),
                                     bairroValue,
                                     cidadeValue,
                                     estadoValue,

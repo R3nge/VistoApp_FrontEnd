@@ -1,10 +1,11 @@
-//Basic Imports
+// Basic Imports
+import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 
-//Icons Imports
+// Icons Imports
 import { MaterialIcons } from '@expo/vector-icons';
-import React from 'react';
 
+// Custom Tab Bar component
 export default function MyTabBar({ state, descriptors, navigation }: any) {
     return (
         <View style={styles.container}>
@@ -74,10 +75,10 @@ export default function MyTabBar({ state, descriptors, navigation }: any) {
                 })}
             </View>
         </View>
-
     );
 }
 
+// Styles
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',

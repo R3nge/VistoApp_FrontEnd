@@ -1,38 +1,40 @@
-//Basic imports
+// Importing necessary libraries and components
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 
-//Icons Imports
+// Importing icons
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-//Props
+// Defining the props for the OptionButton component
 interface OptionButtonProps {
-    icon: any;
-    text: string;
-    onPress: () => void;
+    icon: any; // Icon to be displayed on the button
+    text: string; // Text to be displayed below the button
+    onPress: () => void; // Function to be called when the button is pressed
 }
 
+// Defining the OptionButton component
 const OptionButton: React.FC<OptionButtonProps> = ({ icon, text, onPress }) => {
+    // Rendering the OptionButton component
     return (
         <View style={styles.container}>
-            <TouchableOpacity 
+            <TouchableOpacity
                 style={styles.btn}
-                onPress= {onPress}
+                onPress={onPress} // The function to be called when the button is pressed
             >
                 <MaterialCommunityIcons
-                    name={icon}
-                    size={60}
-                    color="#fff"
+                    name={icon} // The icon to be displayed on the button
+                    size={60} // The size of the icon
+                    color="#fff" // The color of the icon
                 />
             </TouchableOpacity>
             <Text style={styles.text}>
-                {text}
+                {text} // The text to be displayed below the button
             </Text>
         </View>
-
     );
 };
 
+// Defining the styles for the OptionButton component
 const styles = StyleSheet.create({
     container: {
         width: "33.33%",
@@ -60,4 +62,5 @@ const styles = StyleSheet.create({
     },
 });
 
+// Exporting the OptionButton component
 export default OptionButton;

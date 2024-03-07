@@ -1,21 +1,24 @@
-//Basic Import
+// Importing necessary libraries and components
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-//Props
+// Defining the props for the MainButton component
 interface btnProps {
-  textBtn: string;
-  onPress: () => void;
+  textBtn: string; // Text to be displayed on the button
+  onPress: () => void; // Function to be called when the button is pressed
 }
 
+// Defining the MainButton component
 const MainButton: React.FC<btnProps> = ({ textBtn, onPress }) => {
+  // Rendering the MainButton component
   return (
     <TouchableOpacity style={styles.btn} onPress={onPress}>
-      <Text style={styles.text}>{textBtn}</Text>
+      <Text style={styles.text}>{textBtn}</Text> // Displaying the button text
     </TouchableOpacity>
   );
 };
 
+// Defining the styles for the MainButton component
 const styles = StyleSheet.create({
   btn: {
     width: '90%',
@@ -38,4 +41,5 @@ const styles = StyleSheet.create({
   },
 });
 
+// Exporting the MainButton component
 export default MainButton;

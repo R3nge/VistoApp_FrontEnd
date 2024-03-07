@@ -1,30 +1,35 @@
+// Importing necessary libraries and components
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import data from './dropDownImovel.controller';
+import data from './dropDownImovel.controller'; // Importing data fetching function
 
-
-interface DropdownInputProps {
+// Defining the props for the DropDownImovelInput component
+interface DropDownImovelInputProps {
     onChange: (selectedValue: string | null) => void;
 }
 
-const DropdownInput: React.FC<DropdownInputProps> = ({ onChange }) => {
+// Defining the DropDownImovelInput component
+const DropDownImovelInput: React.FC<DropDownImovelInputProps> = ({ onChange }) => {
+    // Using React useState hook for managing local state
     const [value, setValue] = useState(null);
     const [isFocus, setIsFocus] = useState(false);
     const [dropdownData, setDropdownData] = useState([]);
 
+    // Using React useEffect hook to fetch data on component mount
     useEffect(() => {
         const fetchData = async () => {
-            const result = await data();
+            const result = await data(); // Fetching data
             if (result) {
-                setDropdownData(result);
+                setDropdownData(result); // Setting fetched data to state
             }
         };
 
         fetchData();
-    }, []); // Executar apenas uma vez, sem dependências
+    }, []); // Dependency array is empty, so this effect runs only once on mount
 
+    // Function to render the label of the dropdown
     const renderLabel = () => {
         if (value || isFocus) {
             return (
@@ -36,6 +41,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({ onChange }) => {
         return null;
     };
 
+    // Rendering the DropDownImovelInput component
     return (
         <View style={styles.container}>
             {renderLabel()}
@@ -45,7 +51,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({ onChange }) => {
                 selectedTextStyle={styles.selectedTextStyle}
                 inputSearchStyle={styles.inputSearchStyle}
                 iconStyle={styles.iconStyle}
-                data={dropdownData}
+                data={dropdownData} // Using fetched data
                 search
                 maxHeight={300}
                 labelField="label"
@@ -64,7 +70,7 @@ const DropdownInput: React.FC<DropdownInputProps> = ({ onChange }) => {
                     <AntDesign
                         style={styles.icon}
                         color={isFocus ? 'green' : 'black'}
-                        name="user"
+                        name="home"
                         size={20}
                     />
                 )}
@@ -73,12 +79,13 @@ const DropdownInput: React.FC<DropdownInputProps> = ({ onChange }) => {
     );
 };
 
-export default DropdownInput;
+// Exporting the DropDownImovelInput component
+export default DropDownImovelInput;
 
+// Defining the styles for the DropDownImovelInput component
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        backgroundColor: 'white',
         padding: 16,
     },
     dropdown: {

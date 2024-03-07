@@ -1,5 +1,7 @@
+// Importing necessary modules
 import { api, isAxiosError } from "../axiosConfig";
 
+// Defining the data structure for the dropdown
 interface DropDownImovelData {
     id: string;
     icm: string;
@@ -37,6 +39,7 @@ interface DropDownImovelData {
     ]
 }
 
+// Function to fetch data for the dropdown
 const data = async (
     id?: string,
     icm?: string,
@@ -74,6 +77,7 @@ const data = async (
     ]
 ): Promise<DropDownImovelData[]> => {
     try {
+        // Making a GET request to the API
         const response = await api.get(
             "/imovel/listar",
             {
@@ -93,14 +97,15 @@ const data = async (
             }
         );
 
-        // Transforma os dados para o formato esperado pelo Dropdown
+        // Transforming the data to the format expected by the dropdown
         const dropdownData: DropDownImovelData[] = response?.data.map((imovel: DropDownImovelData) => ({
-            label: imovel.rua,
+            label: `${imovel.rua} - ${imovel.numero}`,
             value: imovel.id,
         }));
 
         return dropdownData;
     } catch (err) {
+        // Handling errors
         if (isAxiosError(err)) {
             console.error("Axios error:", err);
             console.error("Response data:", err.response?.data);
@@ -108,9 +113,10 @@ const data = async (
         } else {
             console.error("Non-Axios error:", err);
         }
-        // Retorna null em caso de erro
+        // Returning null in case of error
         return null;
     }
 };
 
+// Exporting the data function
 export default data;
